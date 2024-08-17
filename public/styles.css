@@ -1,3 +1,255 @@
+@font-face {
+  font-family: "WesternCowboys";
+  src: url("/WesternCowboys.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LemonTuesday";
+  src: url("/LemonTuesday.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DarlothesGrunge";
+  src: url("/DarlothesGrunge.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background-color: #333;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-height: 100vh;
+  text-align: center;
+  background-image: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contentContainer {
+  max-width: 100vw;
+  width: 100%;
+}
+
+h1 {
+  font-family: "WesternCowboys";
+  z-index: 2;
+  margin-left: 5vw;
+  font-size: 5em;
+  color: darkmagenta;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.9);
+}
+p,
+form > label {
+  color: #fff;
+}
+a {
+  font-weight: 700;
+  color: #fff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 250px;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("/steelBallBkg.jpg");
+  background-repeat: repeat;
+  background-size: 10px;
+  margin: 10px 0 30px;
+  border-top: 5px solid #ddd;
+  border-bottom: 5px solid #bbb;
+}
+.navTop {
+  display: flex;
+}
+.navbar > .navTop > img.navLogo {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  height: 200px;
+  border-bottom-left-radius: 50px;
+  border-top-right-radius: 3px;
+  box-shadow: 5px 5px 10px rgba(12, 12, 57, 0.7);
+}
+
+li {
+  list-style-type: disc;
+  font-size: 0.8em;
+}
+
+.links {
+  display: flex;
+  align-self: center;
+}
+
+.links ul {
+  display: flex;
+  z-index: 2;
+  justify-content: space-between;
+  align-self: center;
+  width: 300px;
+}
+
+.links a {
+  font-family: "LemonTuesday";
+  font-size: 24px;
+  /* padding: 0 30px; */
+}
+
+.blogList,
+.aboutUsTextContent,
+.blogTemplate,
+article {
+  width: 80vw;
+  max-width: 800px;
+  margin: 320px auto 50px;
+  border-radius: 20px;
+  background-color: rgba(86, 86, 86, 0.7);
+  box-shadow: 1px 1px 10px rgba(200, 12, 200, 0.7);
+}
+
+.blogTemplate,
+form {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  max-width: 600px;
+}
+
+form > input {
+  height: 2em;
+  width: 300px;
+  max-width: 100%;
+  margin: 10px auto 20px;
+  padding: 5px 10px;
+}
+form > textarea {
+  height: 250px;
+  width: 560px;
+  max-width: 100%;
+  margin: 10px auto 30px;
+  padding: 5px 10px;
+}
+
+select {
+  height: 2.5em;
+  max-width: 250px;
+  margin: 5px auto 20px;
+  padding: 5px 10px;
+}
+
+form > button {
+  border-radius: 8px;
+  padding: 5px;
+  max-width: 150px;
+  margin: 20px auto 50px;
+  box-shadow: 1px 1px 10px rgba(200, 12, 200, 0.7);
+}
+
+form > button:hover {
+  color: #fff;
+  background-color: darkmagenta;
+}
+
+.blogPreview,
+.aboutUsText {
+  width: 100%;
+}
+
+.notFound h2 {
+  font-size: 3em;
+}
+
+.notFound p {
+  font-size: 2em;
+}
+
+.notFound,
+.blogPreview h2,
+.aboutUsText h2,
+.blogTemplate h2,
+article > h2 {
+  font-family: "DarlothesGrunge";
+  color: #fff;
+}
+
+.blogPreview > a > h2,
+.aboutUsText > h2,
+article > h2 {
+  padding-top: 20px;
+}
+
+.blogPreview > p,
+.aboutUsText > p,
+article > p,
+div.goToHomePage {
+  padding: 5px 20px;
+}
+
+.blogPreview p:last-of-type,
+.aboutUsText p:last-of-type,
+article > p:last-of-type {
+  padding: 15px 20px 40px 20px;
+}
+
+.blogPreview:hover {
+  background-color: rgba(86, 86, 86, 0.9);
+  box-shadow: 1px 1px 10px rgba(247, 17, 247, 0.962);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.ics-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+a > img.icsLogo {
+  height: 25px;
+}
+
+.ics-p {
+  font-style: italic;
+  align-self: self-start;
 }
