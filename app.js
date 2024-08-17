@@ -2,6 +2,9 @@ import express from "express";
 
 const app = express();
 
+// Register public folder
+app.use(express.static("public"));
+
 // Temporary blog data
 
 const blogs = [
@@ -43,6 +46,6 @@ app.get("/blogs/create", (req, res) => {
 });
 
 // 404
-app.use((req, res) => {
+app.use((_req, res) => {
   res.status(404).render("404", { title: "404" });
 });
