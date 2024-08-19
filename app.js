@@ -28,14 +28,15 @@ const start = async () => {
 
 start();
 
-// Register public folder
+// Register public folder and middleware
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 // Specify which view engine to use
 app.set("view engine", "ejs");
 
 // Test MongoDB routes
-app.get("/blogs/create", (req, res) => {
+/* app.get("/blogs/create", (req, res) => {
   const blog = new Blog({
     title: "Our cryptonite",
     author: "Mr. Glass",
@@ -51,10 +52,31 @@ app.get("/blogs/create", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+}); */
+
+app.get("/", (req, res) => {
+  Blog.find()
+    .then((data) => {
+      res.render("index", { title: "Home", blogs: data });
+    })
+    .catch((err) => {
+      console.error("Encountered the following error: " + err);
+    });
 });
 
-/* app.get("/", (req, res) => {
-  res.render("index", { title: "Home", blogs });
+app.post("/", (req, res) => {
+  // Test the POST request
+  console.log(req.body);
+  const blog = new Blog(req.body);
+
+  blog
+    .save()
+    .then((data) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.error("Encountered the following error: " + err);
+    });
 });
 
 app.get("/about", (req, res) => {
@@ -63,7 +85,7 @@ app.get("/about", (req, res) => {
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Add Blog" });
-}); */
+});
 
 // 404
 app.use((_req, res) => {
