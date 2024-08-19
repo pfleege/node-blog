@@ -54,7 +54,7 @@ app.set("view engine", "ejs");
     });
 }); */
 
-app.get("/", (req, res) => {
+app.get("/blogs", (req, res) => {
   Blog.find()
     .then((data) => {
       res.render("index", { title: "Home", blogs: data });
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.post("/", (req, res) => {
+app.post("/blogs", (req, res) => {
   // Test the POST request
   console.log(req.body);
   const blog = new Blog(req.body);
@@ -72,7 +72,7 @@ app.post("/", (req, res) => {
   blog
     .save()
     .then((data) => {
-      res.redirect("/");
+      res.redirect("/blogs");
     })
     .catch((err) => {
       console.error("Encountered the following error: " + err);
@@ -85,6 +85,28 @@ app.get("/about", (req, res) => {
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Add Blog" });
+});
+
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((data) => {
+      res.render("blog-details", { title: "Blog Details", blog: data });
+    })
+    .catch((err) => {
+      console.error("Encountered the following error: " + err);
+    });
+});
+
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((data) => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => {
+      console.error("Encountered the following error: " + err);
+    });
 });
 
 // 404
