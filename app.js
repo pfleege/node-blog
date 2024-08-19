@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import Blog from "./models/blog.js";
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ const start = async () => {
       console.log("App listening to port " + PORT);
     });
   } catch (err) {
-    console.log(err.message);
+    console.error("Error connecting to MongoDB", err);
   }
 };
 
@@ -30,35 +31,29 @@ start();
 // Register public folder
 app.use(express.static("public"));
 
-// Temporary blog data
-
-const blogs = [
-  {
-    id: 1,
-    title: "Blog 1",
-    blogText:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga sunt quo possimus est commodi doloremque ipsam laudantium suscipit, dolore dignissimos optio, minima quas aperiam cum omnis tenetur qui quidem reiciendis. Rerum ipsa nobis repellat porro maxime quis quam recusandae est.",
-  },
-  {
-    id: 2,
-    title: "Blog 2",
-    blogText:
-      "Lorem ipsum est commodi doloremque ipsam laudantium suscipit, dolore dignissimos optio, minima quas aperiam cum omnis tenetur qui quidem reiciendis.",
-  },
-  {
-    id: 3,
-    title: "Blog 3",
-    blogText:
-      "Lorem quo possimus est commodi doloremque ipsam laudantium suscipit, dolore dignissimos optio, minima quas aperiam cum omnis tenetur qui quidem reiciendis. Rerum ipsa nobis repellat porro maxime quis quam recusandae est.",
-  },
-];
-
-/* app.listen(3000); */
-
 // Specify which view engine to use
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
+// Test MongoDB routes
+app.get("/blogs/create", (req, res) => {
+  const blog = new Blog({
+    title: "Our cryptonite",
+    author: "Mr. Glass",
+    blogText:
+      "Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends.",
+  });
+
+  blog
+    .save()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+/* app.get("/", (req, res) => {
   res.render("index", { title: "Home", blogs });
 });
 
@@ -68,7 +63,7 @@ app.get("/about", (req, res) => {
 
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Add Blog" });
-});
+}); */
 
 // 404
 app.use((_req, res) => {
