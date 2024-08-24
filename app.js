@@ -11,7 +11,7 @@ mongoose.set("strictQuery", false);
 const app = express();
 
 // Import environment variables
-const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT || 3000;
 const dbConnection = process.env.CONNECTION;
 
 // Add DB connection string, set up Mongoose and connect to DB

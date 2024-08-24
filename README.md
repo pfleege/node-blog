@@ -14,7 +14,7 @@ In MongoDB, we've used triggers to schedule database reset so that any inserts a
 
 ## Demo
 
-👁️ [Live Demo](https://test.com)
+👁️ [Live Demo](https://iceeqsolutions-node-blog-demo.adaptable.app/blogs)
 
 ## Built with
 
