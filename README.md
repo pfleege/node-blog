@@ -3,7 +3,7 @@
 ![](./public/NodeBlog.png)
 
 <p align="center">
-  Weather Application Demo Page by <a href="https://iceeqsolutions.fi/">iCeeqSolutions</a>
+  Node Blog Demo by <a href="https://iceeqsolutions.fi/">iCeeqSolutions</a>
 </p>
 
 ## About
@@ -35,5 +35,5 @@ In MongoDB, we've used triggers to schedule database reset so that any inserts a
 
 <br/><br/>
 
-<p align="center"><a href="https://iceeqsolutions.fi/"><img height="30px" width="211px" src=".public/iCS_Logo_Dark.png"></a></p>
+<p align="center"><a href="https://iceeqsolutions.fi/"><img height="30px" width="211px" src="./public/iCS_Logo_Dark.png"></a></p>
 <br/><br/>
