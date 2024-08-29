@@ -36,5 +36,5 @@ In MongoDB, we've used triggers to schedule database resets. This way any insert
 
 <br/><br/>
 
-<p align="center"><a href="https://iceeqsolutions.fi/"><img height="30px" width="211px" src="./public/iCS_Logo_Light.png"></a></p>
+<p align="center"><a href="https://iceeqsolutions.fi/"><img height="61px" width="300px" src="./public/iCS_Logo_Light.png"></a></p>
 <br/><br/>
